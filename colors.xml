@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="Black">#FF000000</color>
+    <color name="White">#FFFFFFFF</color>
+    <color name="Grey">#E5E5E5</color>
+    <color name="Biru">#0000FF</color>
+    <color name="Hijau">#00FF00</color>
+    <color name="Satin">#00FFFF</color>
+    <color name="Nila">	#6F00FF</color>
+    <color name="Violet">#8F00FF</color>
+    <color name="Biru_Dongker">#000080</color>
+    <color name="Cokelat">#964B00</color>
+    <color name="Marun">#800000</color>
+    <color name="Zaitun">#808000</color>
+    <color name="Abu_Abu">#808080</color>
+    <color name="Ungu">#BF00FF</color>
+    <color name="Perak">#C0C0C0</color>
+    <color name="Merah">#FF0000</color>
+    <color name="Margenta">#FF00FF</color>
+    <color name="Pink">#FF007F</color>
+    <color name="Jingga">#FF7F00</color>
+    <color name="Emas">#FFD700</color>
+    <color name="Kuning">#FFFF00</color>
+    <color name="Khaki">#F0E68C</color>
+    <color name="Green_Yellow">#ADFF2F</color>
+</resources>
