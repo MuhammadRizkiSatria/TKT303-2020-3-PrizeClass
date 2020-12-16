@@ -1,47 +1,53 @@
 
 package com.example.prizeclass;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseAppLifecycleListener;
+import com.google.firebase.FirebaseOptions;
 
 public class MainActivity extends AppCompatActivity {
-    DatabaseHelper db;
-    Button logout;
+    Button start_input;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = new DatabaseHelper(this);
+        start_input = (Button) findViewById(R.id.start_input);
 
-        logout = (Button)findViewById(R.id.btn_logout);
-
-
-        Boolean checkSession = db.checkSession("ada");
-        if (checkSession == false) {
-            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(loginIntent);
-            finish();
-        }
-
-        // logout
-        logout.setOnClickListener(new View.OnClickListener() {
+        start_input.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Boolean updtSession = db.upgradeSession("kosong", 1);
-                if (updtSession == true) {
-                    Toast.makeText(getApplicationContext(), "Berhasil Keluar", Toast.LENGTH_SHORT).show();
-                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(loginIntent);
-                    finish();
-                }
+            public void onClick(View view) {
+                showSign();
+
             }
         });
+    }
+
+    public void showSign() {
+        AlertDialog.Builder start_input = new AlertDialog.Builder(MainActivity.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View pop_up_input_kode = inflater.inflate(R.layout.activity_pop_up_input_kode, null);
+
+        start_input.setView(pop_up_input_kode);
+        start_input.show();
     }
 }
 
