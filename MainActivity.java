@@ -20,10 +20,6 @@ import com.google.firebase.FirebaseOptions;
 public class MainActivity extends AppCompatActivity {
     Button start_input;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showSign();
-
             }
         });
     }
