@@ -1,26 +1,54 @@
 <?php
-$dp = "";
-$user = $_POST["user"];
-$pass = $_POST["pass"];
-$host = "localhost";
+require_once 'dbfunction.php';
+$db = new DbFunction();
 
-$conn = mysqli_connect($host,$user,$pass,$db);
-if($conn)
-{
-	$q = "select '$user' and pass like '$pass'";
-	$result = mysqli_querry($conn, $q);
-	
-if(mysqli_num_rows($result) > 0)
-{
-	echo "LOGIN SUCCESFULL....";
-}else{
-echo "LOGIN FAILED....";
+//Json Respon
+$respon = array("error" => FALSE);
+
+//Cek Login
+if (isset($_POST['email']) && isset($_POST['pass'])) {
+	//Receiving POST
+	$email      = $_POST['email'];
+	$pass       = $_POST['pass'];
+
+
+	//Cek Login Untuk Student
+	$user = $db->cekLoginSiswa($email, $pass);
+
+
+	if ($user != false) {
+		$respon["error"] = FALSE;
+		$respon["message"] = "Login Siswa Berhasil";
+		$respon["page"] = "siswa";
+		$respon["id"] = $user["id"];
+		$respon["username"] = $user["username"];
+		$respon["email"] = $user["email"];
+		$respon["pass"] = $user["pass"];
+
+
+		echo json_encode($respon);
+	} else {
+
+		$guru = $db->cekLoginGuru($email, $pass);
+
+		if ($guru != false) {
+			$respon["error"] = FALSE;
+			$respon["message"] = "Login Guru Berhasil";
+			$respon["page"] = "guru";
+			$respon["id"] = $user["id"];
+			$respon["username"] = $user["username"];
+			$respon["email"] = $user["email"];
+			$respon["pass"] = $user["pass"];
+
+			echo json_encode($respon);
+		} else {
+			$respon["error"] = TRUE;
+			$respon["message"] = " Email atau Password salah!";
+			echo json_encode($respon);
+		}
+	}
+} else {
+	$respon["error"] = TRUE;
+	$respon["message"] = "Kehilangan Parameter";
+	echo json_encode($respon);
 }
-
-}else
-{
- "NOT CONNECTED....!"
- }
- 
- 
-?>
